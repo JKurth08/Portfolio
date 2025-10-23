@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro OS — Jack Kurth</title>
+<style>
+body {
+  background-color: #0000AA;
+  color: #FFFFFF;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* CRT flicker overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 2px,
+    rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px
+  );
+  z-index: 0;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+@keyframes flicker {
+  0%, 100% { opacity: 0.97; }
+  50% { opacity: 1; }
+}
+
+/* The desktop container */
+.desktop {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* Icons */
+.icon {
+  width: 128px;
+  text-align: center;
+  color: #FFF;
+  position: absolute;
+  cursor: move;
+  user-select: none;
+}
+
+.icon span {
+  display: block;
+  margin-top: -20px;
+  font-size: 16px;
+}
+
+.icon img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.icon-img {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+/* Window */
+.window {
+  position: absolute;
+  top: 120px;
+  left: 200px;
+  width: 420px;
+  background-color: #000055;
+  border: 2px solid #FFFFFF;
+  display: none;
+  box-shadow: 2px 2px 0px #000;
+}
+
+.window-header {
+  background-color: #000088;
+  padding: 4px 8px;
+  font-weight: bold;
+  cursor: move;
+  user-select: none;
+}
+
+.window-content {
+  padding: 10px;
+}
+
+.window a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  margin: 4px 0;
+}
+
+.window a:hover {
+  text-decoration: underline;
+}
+
+/* Close Button*/
+.close-button {
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-top: 2px;
+    cursor: pointer;
+    image-rendering: pixelated;  /* Makes it look retro */
+    border: 1px solid #FFF;
+    background-color: #AA0000;
+    padding: 2px;
+}
+
+.close-button:hover {
+  background-color: #FF0000;
+  color: #FFFF55;
+}
+
+
+</style>
+</head>
+<body>
+<div class="desktop">
+    <!-- Icons -->
+    <div class="icon" style="top: 60px; left: 40px;" data-target="projects">
+        <img src="icons/folder_2.png" alt="Projects" class="icon-img">
+        <span>Projects</span>
+    </div>
+
+    <div class="icon" style="top: 200px; left: 40px;">
+        <img src="icons/terminal.png" alt="Terminal" class="icon-img">
+        <span>Terminal</span>
+    </div>
+
+    <div class="icon" style="top: 350px; left: 40px;">
+        <img src="icons/editor.png" alt="Editor" class="icon-img">
+        <span>Editor</span>
+    </div>
+
+    <!-- Projects window -->
+    <div class="window" id="projects">
+        <div class="window-header">Projects</div>
+        <img src="icons/close_button.png" alt="Close" class="close-button">
+        <div class="window-content">
+            <a href="#">🧮 Fractional Knapsack (Java)</a>
+            <a href="#">⏳ Task Scheduling (HeapAPQ)</a>
+            <a href="#">🌦️ Weather App (Python + API)</a>
+            <a href="#">🧠 AI Stock Predictor</a>
+            <a href="#">💻 Terminal Emulator (C)</a>
+        </div>
+    </div>
+</div>
+    <!-- Java Script element -->
+<script>
+
+  // === ICON DRAGGING ===
+const icons = document.querySelectorAll('.icon');
+icons.forEach(icon => {
+    let offsetX = 0, offsetY = 0, startX = 0, startY = 0, isDragging = false;
+
+    icon.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+
+        const rect = icon.getBoundingClientRect();
+        offsetX = rect.left;
+        offsetY = rect.top;
+
+        icon.style.transition = "none";
+        icon.style.zIndex = 10;
+
+        e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      icon.style.left = offsetX + dx + "px";
+      icon.style.top = offsetY + dy + "px";
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      icon.style.transition = "left 0.05s linear, top 0.05s linear";
+      icon.style.zIndex = 1;
+    });
+
+    // Double-click to open windows
+    icon.addEventListener('dblclick', () => {
+      const target = icon.getAttribute('data-target');
+      if (target) {
+        const win = document.getElementById(target);
+        win.style.display = 'block';
+      }
+    });
+});
+
+  // === WINDOW DRAGGING ===
+  const windows = document.querySelectorAll('.window');
+  windows.forEach(win => {
+    const header = win.querySelector('.window-header');
+    let startX = 0, startY = 0, offsetX = 0, offsetY = 0, isDragging = false;
+
+    header.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      const rect = win.getBoundingClientRect();
+      offsetX = rect.left;
+      offsetY = rect.top;
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      win.style.left = offsetX + dx + "px";
+      win.style.top = offsetY + dy + "px";
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+  });
+
+
+// === CLOSE BUTTONS ===
+document.querySelectorAll('.close-button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const win = e.target.closest('.window');
+    win.style.display = 'none';
+  });
+});
+
+
+</script>
+</body>
+</html>
