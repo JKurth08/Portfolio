@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+
+  <link rel="stylesheet" href="../css/contact.css">
+  
+</head>
+<body>
+
+  <h1>Contact</h1>
+  <p>
+    I'm always happy to connect! If you have questions, opportunities, or want to chat about projects, 
+    you can reach me at 
+    <a href="mailto:jack.kurth@example.com">jmkurth@mtu.edu</a> 
+    or fill out the form below.
+  </p>
+
+  <div class="social-row">
+  <a class="badge" href="https://github.com/JKurth08" target="_blank" rel="noopener">
+    <img src="../icons/github.webp" alt="GitHub">
+    <!-- Optional label: delete the next line if you want images only -->
+    <span>GitHub</span>
+  </a>
+
+  <a class="badge" href="https://www.linkedin.com/in/jkurth0/" target="_blank" rel="noopener">
+    <img src="../icons/folder.png" alt="LinkedIn">
+    <!-- Optional label: delete the next line if you want images only -->
+    <span>LinkedIn</span>
+  </a>
+  </div>
+
+
+  <form action="../../backend/contact.php" method="POST" autocomplete="off" novalidate>
+    <label><span class="required">*</span>Your Name:</label>
+    <input type="text" name="name" placeholder="Name" required>
+
+    <label><span class="required">*</span>Email:</label>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <label>Company (optional):</label>
+    <input type="text" name="company" placeholder="Company">
+
+    <label><span class="required">*</span>Message:</label>
+    <textarea name="message" placeholder="Your message..." required></textarea>
+
+    <!-- Honeypot (humans won't fill this; bots will) -->
+    <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+
+  <p class="note"><span class="required">*</span>required</p>
+
+</body>
+</html>

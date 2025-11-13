@@ -1,0 +1,93 @@
+
+@font-face {
+    font-family: 'Millennium';
+    src: url('../fonts/Millennium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Millennium-Bold';
+    src: url('../fonts/Millennium-Bold.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: 'Millennium', sans-serif;
+    color: #000;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+
+h1, h2, h3 {
+    font-family: 'Millennium-Bold', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 28px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    font-family: 'Millennium', sans-serif;
+    font-size: 15px;
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.section {
+    margin-bottom: 10px;
+}
+
+.contact {
+    font-family: 'Millennium', sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.divider {
+    border-top: 2px solid #000;
+    margin: 18px 0;
+}
+
+strong {
+    font-family: 'Millennium-Bold', sans-serif;
+}
+
+.resume-section {
+    display: flex;
+    align-items: center;          /* vertically centers text and image */
+    gap: 20px;                    /* space between image and text */
+    margin-top: 20px;
+}
+
+.resume-image {
+    width: 100px;                 /* make it large enough to span both lines */
+    height: 100px;                /* tweak this to your desired height */
+    object-fit: cover;            /* keeps proportions clean */
+    image-rendering: pixelated;   /* nice retro crisp look */
+}
+
+.resume-text h2 {
+    font-family: 'Millennium-Bold', sans-serif;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.resume-text a {
+    font-family: 'Millennium', sans-serif;
+    text-decoration: none;
+    color: #0000AA;
+    font-size: 15px;
+}
+
+.resume-text a:hover {
+    text-decoration: underline;
+}

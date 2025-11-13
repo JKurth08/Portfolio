@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio OS</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Boot Screen -->
+  <div class="boot-screen">
+    <div class="boot-text">
+PortfolioOS v1.0
+Copyright (C) 2025
+
+Initializing system...
+Loading desktop environment...
+Mounting user profile...
+<span class="blink">_</span>
+    </div>
+  </div>
+
+  <!-- Desktop -->
+  <div class="desktop" id="desktop">
+    <div class="desktop-icon" style="top:20px;left:20px" data-window="about">
+      <img src="icons/folder.png" alt="About Me"><span>About Me</span>
+    </div>
+    <div class="desktop-icon" style="top:20px;left:120px" data-window="projects">
+      <img src="icons/folder_2.png" alt="Projects"><span>Projects</span>
+    </div>
+    <div class="desktop-icon" style="top:20px;left:220px" data-window="contact">
+      <img src="icons/editor.png" alt="Contact"><span>Contact</span>
+    </div>
+    <div class="desktop-icon" style="top:20px;left:330px" data-window="terminal">
+      <img src="icons/terminal.png" alt="Terminal"><span>Terminal</span>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="window" id="about-window" data-icon="icons/folder.png" data-title="About">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <img src="icons/folder.png" width="16" height="16" style="image-rendering:pixelated"> About Me
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" data-action="minimize">_</button>
+        <button aria-label="Maximize" data-action="maximize">□</button>
+        <button aria-label="Close" class="close-btn">×</button>
+      </div>
+    </div>
+    <div class="window-body">
+        <iframe src="windows/about.html" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+    <div class="window-bottom"><span>copyright</span></div>
+    <div class="resizer"></div>
+  </div>
+
+  <!-- Projects -->
+  <div class="window" id="projects-window" data-icon="icons/folder_2.png" data-title="Projects">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <img src="icons/folder_2.png" width="16" height="16" style="image-rendering:pixelated"> Projects
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" data-action="minimize">_</button>
+        <button aria-label="Maximize" data-action="maximize">□</button>
+        <button aria-label="Close" class="close-btn">×</button>
+      </div>
+    </div>
+    <div class="window-body">
+
+
+      <iframe src="windows/project.html" style="width:100%; height:100%; border:none;"></iframe>
+
+
+    </div>
+    <div class="window-bottom"><span>copyright</span></div>
+    <div class="resizer"></div>
+  </div>
+
+  <!-- Contact -->
+  <div class="window" id="contact-window" data-icon="icons/editor.png" data-title="Contact">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <img src="icons/editor.png" width="16" height="16" style="image-rendering:pixelated"> Contact
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" data-action="minimize">_</button>
+        <button aria-label="Maximize" data-action="maximize">□</button>
+        <button aria-label="Close" class="close-btn">×</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <iframe src="windows/contact.html" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+    <div class="window-bottom"><span>copyright</span></div>
+    <div class="resizer"></div>
+  </div>
+
+  <!-- Terminal -->
+  <div class="window" id="terminal-window" data-icon="icons/terminal.png" data-title="Terminal">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <img src="icons/terminal.png" width="16" height="16" style="image-rendering:pixelated"> Terminal
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" data-action="minimize">_</button>
+        <button aria-label="Maximize" data-action="maximize">□</button>
+        <button aria-label="Close" class="close-btn">×</button>
+      </div>
+    </div>
+    <div class="window-body terminal-body" id="terminal-body">
+      <div class="terminal-output" id="terminal-output">--help for available commands<br></div>
+      <div class="terminal-input-line">
+        <span class="prompt">&gt; </span>
+        <span id="terminal-input" class="terminal-input" contenteditable="true"></span>
+      </div>
+    </div>
+    <div class="resizer"></div>
+  </div>
+
+ <!-- Taskbar -->
+<div class="taskbar">
+  <button class="start-button">Start</button>
+
+  <!-- ADD THIS: where minimized windows will show up -->
+  <div id="taskbar-items" class="taskbar-items" aria-label="Open windows"></div>
+
+  <!-- Start Menu Popup -->
+  <div id="start-menu" class="start-menu">
+    <ul>
+      <li id="start-about">About</li>
+      <li id="start-projects">Projects</li>
+      <li id="start-contact">Contact</li>
+      <hr>
+      <li id="start-sleep">Sleep</li>
+      <li id="start-shutdown">Shut Down...</li>
+    </ul>
+  </div>
+  <div class="taskbar-divider"></div>
+  <div class="clock" id="clock">12:00 PM</div>
+</div>
+
+  <!-- JS -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>

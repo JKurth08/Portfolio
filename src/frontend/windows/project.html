@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects</title>
+
+  <!-- Fonts to match your site -->
+  <link rel="stylesheet" href="../css/project.css">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="hero">
+    <div>
+      <div class="title">Projects</div>
+      <div class="subtitle">A curated set of builds — algorithms, systems, and playful experiments.</div>
+    </div>
+  </div>
+
+  <!-- Filters & search -->
+  <div class="controls">
+    <div class="chip active" data-filter="all">All</div>
+    <div class="chip" data-filter="java">Java</div>
+    <div class="chip" data-filter="python">Python</div>
+    <div class="chip" data-filter="c">C</div>
+    <div class="chip" data-filter="web">Web</div>
+
+    <div class="search">
+      <label for="q">Search:</label>
+      <input id="q" type="text" placeholder="type to filter…">
+    </div>
+  </div>
+
+  <!-- Project grid -->
+  <div class="grid" id="grid">
+    <!-- Example cards — edit/duplicate as you like -->
+    <article class="card" data-tags="java algorithms" data-lang="java">
+      <h3>Ascii-Draw</h3>
+      <div class="tags">
+        <span class="tag">C</span>
+        <span class="tag">Java</span>
+      </div>
+      <p class="desc">Turn simple text files into retro ASCII art right in your terminal. 
+        Feed in a canvas size, per-pixel brightness values, and (optionally) a binary threshold; 
+        get a crisp ASCII rendering with either smooth grayscale or bold high-contrast output.</p>
+      <div class="actions">
+        <a class="btn link" href="https://github.com/JKurth08/Ascii-Draw" target="_blank" rel="noopener">View Code</a>
+        <button class="btn toggle">Details</button>
+        <button class="btn copy" data-copy="java HeapAPQ.java">Copy Run Cmd</button>
+      </div>
+      <div class="details">
+Complexity notes:
+• insert: O(log n)
+• removeMin: O(log n)
+• replaceKey/Value: O(log n) via locator map
+      </div>
+    </article>
+
+    <article class="card" data-tags="java algorithms" data-lang="java">
+      <h3>Fractional Knapsack</h3>
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">Greedy</span>
+      </div>
+      <p class="desc">Greedy solver that prioritizes items by value/weight ratio; supports dense inputs and stable sorting.</p>
+      <div class="actions">
+        <a class="btn link" href="#" target="_blank" rel="noopener">View Code</a>
+        <button class="btn toggle">Details</button>
+        <button class="btn copy" data-copy="java FractionalKnapsack.java">Copy Run Cmd</button>
+      </div>
+      <div class="details">
+• Reads CSV items, outputs selected fractions and total value.
+• Optional: tie-breaking for equal ratios.
+      </div>
+    </article>
+
+    <article class="card" data-tags="python app" data-lang="python">
+      <h3>WeatherApp</h3>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">API</span>
+      </div>
+      <p class="desc">CLI/GUI hybrid that fetches and caches weather data; includes key validation and .env handling.</p>
+      <div class="actions">
+        <a class="btn link" href="#" target="_blank" rel="noopener">View Code</a>
+        <button class="btn toggle">Details</button>
+        <button class="btn copy" data-copy="python3 weather_app.py --city='Houghton, MI'">Copy Run Cmd</button>
+      </div>
+      <div class="details">
+• Local caching to reduce API calls.
+• Graceful error messages and retry prompts.
+      </div>
+    </article>
+
+    <article class="card" data-tags="c systems" data-lang="c">
+      <h3>TerminalEmulator</h3>
+      <div class="tags">
+        <span class="tag">C</span>
+        <span class="tag">Systems</span>
+      </div>
+      <p class="desc">Lightweight pseudo-terminal with typed-text echo matching and scroll-safe output.</p>
+      <div class="actions">
+        <a class="btn link" href="#" target="_blank" rel="noopener">View Code</a>
+        <button class="btn toggle">Details</button>
+        <button class="btn copy" data-copy="gcc terminal.c -o term && ./term">Copy Run Cmd</button>
+      </div>
+      <div class="details">
+• Input echo mirrors the display font for consistent look.
+• Scrollback buffer with clamp to avoid jitter.
+      </div>
+    </article>
+
+    <article class="card" data-tags="web portfolio" data-lang="web">
+      <h3>PortfolioOS</h3>
+      <div class="tags">
+        <span class="tag">Web</span>
+        <span class="tag">UI</span>
+      </div>
+      <p class="desc">Retro desktop in the browser — draggable windows, taskbar, start menu, and terminal.</p>
+      <div class="actions">
+        <a class="btn link" href="https://github.com/JKurth08" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn toggle">Details</button>
+        <button class="btn copy" data-copy="echo 'Welcome to PortfolioOS'">Copy Run Cmd</button>
+      </div>
+      <div class="details">
+• Windows-95-style chrome, bold title bars, and iframe pages.
+• Clean centering logic & bounds for drag/resize.
+      </div>
+    </article>
+  </div>
+
+  <div class="note">Tip: Use the chips to filter by language, or search by title/tag/description.</div>
+
+  <!--JS-->
+  <script src="../scripts/project.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+@font-face {
+    font-family: 'Millennium';
+    src: url('../fonts/Millennium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Millennium-Bold';
+    src: url('../fonts/Millennium-Bold.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Millennium', sans-serif;
+    color: #000;
+    padding: 30px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+h1 {
+    font-family: 'Millennium-Bold', sans-serif;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 15px;
+    margin: 10px 0 18px;
+    text-align: justify;
+}
+
+a {
+    color: #0000AA;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    font-family: 'Millennium-Bold', sans-serif;
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #000;
+    font-family: 'Millennium', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.required {
+    color: #b00;
+    margin-right: 4px;
+}
+
+.submit-btn {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
+    padding: 6px 12px;
+    margin-top: 14px;
+    font-family: 'Millennium-Bold', sans-serif;
+    cursor: pointer;
+}
+
+.submit-btn:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
+}
+
+.note {
+    font-size: 13px;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+
+/* Row that holds just the two badges */
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;      /* wraps on small screens */
+  margin: 10px 0 20px;
+}
+
+/* Each badge = (icon 100x100) with an optional label below */
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Force the icons to exactly 100x100 */
+.badge img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;        /* won’t distort logo */
+  image-rendering: pixelated; /* keeps the retro crisp look */
+  display: block;
+}
+
+/* optional label under each icon (remove if you don’t want text) */
+.badge span {
+  font-size: 14px;
+  line-height: 1.1;
+}
